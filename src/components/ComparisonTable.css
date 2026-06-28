@@ -1,0 +1,164 @@
+/* ===================================
+   Comparison Table Section
+   =================================== */
+
+.ct__header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.ct__header .section-subtitle {
+  margin: 0 auto;
+}
+
+/* ---- Table ---- */
+
+.ct__table-wrap {
+  max-width: 920px;
+  margin: 0 auto;
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.ct__row {
+  display: grid;
+  grid-template-columns: 1.2fr 1.6fr 1.6fr;
+  border-bottom: 1px solid var(--color-gray-100);
+  transition: background var(--transition-fast);
+}
+
+.ct__row:last-child {
+  border-bottom: none;
+}
+
+.ct__row:not(.ct__row--header):hover {
+  background: var(--color-gray-50);
+}
+
+.ct__row--header {
+  background: var(--color-gray-900);
+}
+
+.ct__row--header .ct__cell {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  color: var(--color-white);
+  padding: 18px 24px;
+}
+
+.ct__row--header .ct__cell--competitor {
+  color: var(--color-gray-400);
+}
+
+.ct__cell {
+  padding: 18px 24px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ct__cell--feature {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--color-black);
+  font-size: 0.85rem;
+}
+
+.ct__cell--bees {
+  color: var(--color-gray-700);
+  border-left: 1px solid var(--color-gray-100);
+}
+
+.ct__cell--competitor {
+  color: var(--color-gray-500);
+  border-left: 1px solid var(--color-gray-100);
+}
+
+.ct__brand-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 14px;
+  background: var(--color-white);
+  color: var(--color-black);
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.ct__check-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #e8f5e9;
+  color: #2e7d32;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ct__x-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fbe9e7;
+  color: #c62828;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 768px) {
+  .ct__row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .ct__row--header {
+    display: none;
+  }
+
+  .ct__row {
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-bottom: 1px solid var(--color-gray-200);
+  }
+
+  .ct__cell {
+    padding: 0;
+  }
+
+  .ct__cell--feature {
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+  }
+
+  .ct__cell--bees,
+  .ct__cell--competitor {
+    border-left: none;
+    font-size: 0.85rem;
+  }
+
+  .ct__cell--bees::before {
+    content: 'BEES: ';
+    font-weight: 600;
+    color: var(--color-black);
+  }
+
+  .ct__cell--competitor::before {
+    content: 'Others: ';
+    font-weight: 600;
+    color: var(--color-gray-600);
+  }
+}

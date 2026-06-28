@@ -1,0 +1,179 @@
+/* ===================================
+   Product / Ingredients Section
+   =================================== */
+
+.pi__header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.pi__header .section-subtitle {
+  margin: 0 auto;
+}
+
+/* ---- Ingredient Grid ---- */
+
+.pi__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 56px;
+}
+
+/* Make the last 2 cards center if 5 total */
+.pi__grid > :nth-child(4) {
+  grid-column: 1 / 2;
+}
+
+.pi__card {
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: box-shadow var(--transition-base);
+  cursor: default;
+}
+
+.pi__card:hover {
+  box-shadow: var(--shadow-xl);
+}
+
+.pi__card-image-wrap {
+  width: 100%;
+  height: 200px;
+  background: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.pi__card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform var(--transition-slow);
+}
+
+.pi__card:hover .pi__card-image {
+  transform: scale(1.06);
+}
+
+.pi__card-content {
+  padding: 24px;
+  border-top: 1px solid var(--color-gray-100);
+}
+
+.pi__card-name {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-black);
+  margin-bottom: 4px;
+}
+
+.pi__card-source {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-gray-400);
+  font-style: italic;
+  margin-bottom: 12px;
+}
+
+.pi__card-function {
+  font-size: 0.88rem;
+  color: var(--color-gray-600);
+  line-height: 1.65;
+}
+
+/* ---- Bottom row centering for 5 items ---- */
+@media (min-width: 769px) {
+  .pi__grid {
+    /* We'll use a trick: last 2 items centered with offsets */
+  }
+
+  /* When we have 5 cards in a 3-col grid, last row has 2 items.
+     We offset them to appear centered. */
+  .pi__card:nth-child(4) {
+    grid-column-start: 1;
+  }
+
+  .pi__card:nth-child(5) {
+    grid-column-start: 2;
+  }
+
+  /* Actually, let's use a cleaner 5-col approach on large screens: */
+}
+
+/* Truly center the last 2: use justify on the grid */
+@media (min-width: 769px) {
+  .pi__grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .pi__card {
+    width: calc(33.333% - 16px);
+    max-width: 380px;
+  }
+}
+
+/* ---- Callout ---- */
+
+.pi__callout {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 32px 36px;
+  background: var(--color-gray-900);
+  border-radius: var(--radius-lg);
+  border-left: 4px solid var(--color-accent);
+}
+
+.pi__callout-title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-white);
+  margin-bottom: 12px;
+}
+
+.pi__callout-text {
+  font-size: 0.9rem;
+  color: var(--color-gray-400);
+  line-height: 1.75;
+}
+
+.pi__callout-text strong {
+  color: var(--color-white);
+}
+
+.pi__callout-text em {
+  font-style: italic;
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 768px) {
+  .pi__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pi__card {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .pi__callout {
+    padding: 24px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .pi__card {
+    width: calc(50% - 12px);
+  }
+}

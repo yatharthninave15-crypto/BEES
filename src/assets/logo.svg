@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 40" width="160" height="40" fill="none">
+  <!-- Icon: Modern Geometric Bee/Honeycomb -->
+  <g transform="translate(0, 4)">
+    <!-- Hexagon Honeycomb -->
+    <path d="M20 2 L35 11 L35 29 L20 38 L5 29 L5 11 Z" stroke="#000" stroke-width="2.5" stroke-linejoin="round" />
+    <!-- Bee wings & body inside hexagon -->
+    <!-- Head -->
+    <circle cx="20" cy="12" r="3" fill="#000" />
+    <!-- Body -->
+    <rect x="18" y="17" width="4" height="12" rx="2" fill="#000" />
+    <!-- Wings -->
+    <path d="M18 19 C12 16 10 22 17 21" stroke="#000" stroke-width="2" stroke-linecap="round" fill="none" />
+    <path d="M22 19 C28 16 30 22 23 21" stroke="#000" stroke-width="2" stroke-linecap="round" fill="none" />
+    <!-- Stripes on body -->
+    <line x1="18.5" y1="21" x2="21.5" y2="21" stroke="#fff" stroke-width="1" />
+    <line x1="18.5" y1="25" x2="21.5" y2="25" stroke="#fff" stroke-width="1" />
+  </g>
+  
+  <!-- Typography: BEES -->
+  <text x="48" y="28" font-family="'Outfit', 'Inter', system-ui, sans-serif" font-size="24" font-weight="800" fill="#000" letter-spacing="0.05em">BEES</text>
+</svg>
