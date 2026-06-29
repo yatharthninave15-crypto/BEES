@@ -138,6 +138,7 @@ export default function FAQ() {
               <div className="faq__ask-input-wrap">
                 <input
                   type="text"
+                  name="question"
                   placeholder="Type your question..."
                   value={userQuestion}
                   onChange={(e) => setUserQuestion(e.target.value)}
