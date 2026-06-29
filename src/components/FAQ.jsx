@@ -58,17 +58,39 @@ function FAQItem({ faq, isOpen, onToggle, index }) {
   )
 }
 
+const FORMSPREE_FAQ_URL = 'https://formspree.io/f/mojowzvj'
+
 export default function FAQ() {
   const [openId, setOpenId] = useState(null)
   const [userQuestion, setUserQuestion] = useState('')
-  const [submitted, setSubmitted] = useState(false)
+  const [status, setStatus] = useState('idle') // idle | loading | success | error
 
-  const handleSubmitQuestion = (e) => {
+  const handleSubmitQuestion = async (e) => {
     e.preventDefault()
-    if (userQuestion.trim()) {
-      setSubmitted(true)
-      setUserQuestion('')
-      setTimeout(() => setSubmitted(false), 3000)
+    const question = userQuestion.trim()
+    if (!question) return
+
+    setStatus('loading')
+
+    try {
+      const res = await fetch(FORMSPREE_FAQ_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          _subject: 'BEES FAQ Question',
+          question,
+        }),
+      })
+
+      if (res.ok) {
+        setStatus('success')
+        setUserQuestion('')
+        setTimeout(() => setStatus('idle'), 3000)
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
     }
   }
 
@@ -121,13 +143,20 @@ export default function FAQ() {
                   onChange={(e) => setUserQuestion(e.target.value)}
                   className="faq__ask-input"
                   id="faq-question-input"
+                  required
+                  disabled={status === 'loading'}
                 />
-                <button type="submit" className="faq__ask-btn" aria-label="Submit question">
+                <button
+                  type="submit"
+                  className="faq__ask-btn"
+                  aria-label="Submit question"
+                  disabled={status === 'loading'}
+                >
                   <Send size={18} />
                 </button>
               </div>
               <AnimatePresence>
-                {submitted && (
+                {status === 'success' && (
                   <motion.p
                     className="faq__ask-success"
                     initial={{ opacity: 0, y: -8 }}
@@ -135,6 +164,16 @@ export default function FAQ() {
                     exit={{ opacity: 0 }}
                   >
                     Thanks! We'll get back to you soon.
+                  </motion.p>
+                )}
+                {status === 'error' && (
+                  <motion.p
+                    className="faq__ask-error"
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                  >
+                    Something went wrong. Please try again.
                   </motion.p>
                 )}
               </AnimatePresence>

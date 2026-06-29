@@ -151,6 +151,17 @@
   font-weight: 500;
 }
 
+.faq__ask-error {
+  font-size: 0.82rem;
+  color: #ef5350;
+  font-weight: 500;
+}
+
+.faq__ask-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* ---- Responsive ---- */
 
 @media (max-width: 768px) {
